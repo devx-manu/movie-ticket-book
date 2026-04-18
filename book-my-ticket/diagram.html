@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad:true, 
+      theme: 'base',
+      themeVariables: {
+        primaryColor: '#ffffff',
+        edgeLabelBackground:'#ffffff',
+        tertiaryColor: '#f4f4f4'
+      }
+    });
+  </script>
+  <style>
+    body { background: white; padding: 50px; font-family: sans-serif; }
+    .mermaid { display: flex; justify-content: center; }
+  </style>
+</head>
+<body>
+  <div class="mermaid">
+    graph TD
+      Client([Client Browser / Mobile]):::clientClass
+      Controller([Spring Controllers]):::controllerClass
+      Service([Business Service Layer]):::serviceClass
+      Redis[(Redis Volatile Cache)]:::cacheClass
+      Repository([Spring Data Repositories]):::repoClass
+      DB[(MySQL Relational Database)]:::dbClass
+
+      Client -->|HTTP Request / Response| Controller
+      Controller -->|DTO Data Mapping| Service
+      Service -->|OTP / Transaction Caching| Redis
+      Service -->|JPA Entity Operations| Repository
+      Repository -->|Hibernate ORM Mapping| DB
+      DB -->|Result Sets| Repository
+      Repository -->|Entities| Service
+      Service -->|Validation Checks| Controller
+
+      classDef clientClass fill:#2A9D8F,stroke:#264653,stroke-width:2px,color:#fff,font-weight:bold;
+      classDef controllerClass fill:#E9C46A,stroke:#264653,stroke-width:2px,color:#333,font-weight:bold;
+      classDef serviceClass fill:#F4A261,stroke:#264653,stroke-width:2px,color:#fff,font-weight:bold;
+      classDef cacheClass fill:#E76F51,stroke:#264653,stroke-width:2px,color:#fff,font-weight:bold;
+      classDef repoClass fill:#8AB17D,stroke:#264653,stroke-width:2px,color:#fff,font-weight:bold;
+      classDef dbClass fill:#264653,stroke:#264653,stroke-width:2px,color:#fff,font-weight:bold;
+  </div>
+</body>
+</html>

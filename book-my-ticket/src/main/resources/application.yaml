@@ -1,0 +1,42 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: book-my-ticket
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/book_my_ticket
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false   # ✅ Correct place
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 6886suguna@gmail.com
+    password: mrlj frqy agbw vegb
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+admin:
+  email: 6886suguna@gmail.com
+  password: mrlj frqy agbw vegb
+
+# Optional
+# cloudinary:
+#   url: YOUR_CLOUDINARY_URL

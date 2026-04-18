@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies</title>
+</head>
+<body>
+
+<h1>Available Movies</h1>
+
+<div th:each="movie : ${movies}">
+    <h2 th:text="${movie.name}"></h2>
+    <p th:text="${movie.genre}"></p>
+    <p th:text="${movie.description}"></p>
+    <img th:src="${movie.imageLink}" width="150"/>
+    <hr/>
+</div>
+
+</body>
+</html>
